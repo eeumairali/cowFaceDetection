@@ -1,0 +1,55 @@
+Results and Discussion
+
+ Results
+
+ Training and Validation Losses
+The analysis of training and validation losses reveals the following trends:
+1. Box Loss: The training box loss decreased steadily across epochs, indicating the model's ability to better localize objects. Validation box loss followed a similar trend but with slightly higher values, suggesting generalization with minimal overfitting.
+2. Classification Loss: Both training and validation classification losses showed consistent reductions over time. This indicates the model's growing accuracy in classifying object categories.
+
+ Metrics (Precision, Recall, mAP50)
+The precision, recall, and mAP50 metrics showed significant improvement over epochs:
+1. Precision: Maintained a high average value (mean: 0.976), reflecting the model's ability to minimize false positives.
+2. Recall: Averaged at 0.955, signifying effective detection of true positives.
+3. mAP50: Achieved an average of 0.981, demonstrating high overall detection accuracy at an IoU threshold of 0.5.
+4. mAP50-95: The mean value of 0.812 suggests robust performance across a range of IoU thresholds, highlighting the model's general reliability.
+
+ Learning Rate Analysis
+The learning rates for parameter groups (lr/pg0, lr/pg1, lr/pg2) showed gradual reductions over time, which contributed to the model's convergence and prevented oscillations in the loss functions.
+
+ Correlation Analysis
+The heatmap of correlations revealed:
+1. A strong positive correlation between mAP50 and mAP50-95 (≈ 0.98), indicating consistent performance across IoU thresholds.
+2. Negative correlations between losses (box, classification) and metrics (precision, recall, mAP50), affirming the expected inverse relationship between these factors.
+
+ Discussion
+
+ Model Performance
+The high values of precision, recall, and mAP50 demonstrate that the model effectively detects and classifies objects within the dataset. The consistent reduction in losses and the absence of significant overfitting (as evidenced by validation losses tracking training losses) further validates the robustness of the training process. However, slight variations in validation losses hint at potential areas for improvement in model generalization.
+
+ Comparison of mAP50 and mAP50-95
+The high correlation between mAP50 and mAP50-95 indicates that the model performs reliably across a range of IoU thresholds, making it suitable for diverse real-world applications. The slight drop in mAP50-95 compared to mAP50 suggests that performance could be optimized further at stricter IoU thresholds.
+
+ Implications for Research
+1. The high precision and recall values are particularly beneficial for applications requiring accurate detection with minimal false alarms, such as livestock monitoring.
+2. The correlation analysis highlights the importance of focusing on metrics like mAP50-95 for comprehensive performance evaluation, as it accounts for various IoU thresholds.
+3. The gradual reduction in learning rates underscores the importance of appropriate learning rate schedules for model stability.
+
+ Recommendations
+1. Data Augmentation: Introducing more diverse augmentations could improve generalization and further reduce validation losses.
+2. Hyperparameter Tuning: Fine-tuning learning rates and other hyperparameters might help optimize performance at higher IoU thresholds.
+3. Additional Metrics: Including metrics like F1-score could provide a more holistic view of model performance.
+
+Overall, the results demonstrate a well-trained model with strong detection capabilities and room for further optimization, particularly in improving generalization at stricter IoU thresholds.
+
+
+
+
+
+
+
+
+
+
+
+

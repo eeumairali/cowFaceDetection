@@ -1,0 +1,14 @@
+train: /mnt/c/Users/eeuma/Desktop/cow_facial_recognition_yolo_imagenet/ehanced_dataset_yolov8/train/images
+val: /mnt/c/Users/eeuma/Desktop/cow_facial_recognition_yolo_imagenet/ehanced_dataset_yolov8/valid/images
+test: /mnt/c/Users/eeuma/Desktop/cow_facial_recognition_yolo_imagenet/ehanced_dataset_yolov8/test/images
+
+
+nc: 1
+names: ['cowFace']
+
+roboflow:
+  workspace: facedetection-d7noo
+  project: cow-face-extension-2
+  version: 3
+  license: Public Domain
+  url: https://universe.roboflow.com/facedetection-d7noo/cow-face-extension-2/dataset/3

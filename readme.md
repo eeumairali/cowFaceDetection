@@ -14,11 +14,11 @@ This repository contains a fine-tuned YOLO model designed for cow facial recogni
     ```
 2. Install dependencies:
     ```bash
-    pip install -r requirements.txt
+    # make a wsl and install pytorch on it
     ```
 3. Run the model:
     ```bash
-    python detect.py --source <path_to_images_or_video>
+    # run from terminal of wsl
     ```
 
 ## Usage

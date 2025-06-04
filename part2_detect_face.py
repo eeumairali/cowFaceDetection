@@ -1,13 +1,24 @@
 import cv2
 import os
 from ultralytics import YOLO
+import streamlit as st
+import datetime
 
 class YOLOProcessor:
-    def __init__(self, model_path):
+    def __init__(self, model_path=None, trained_dir="models/yolov8_trained"):
         """
         Initialize the YOLO model.
         :param model_path: Path to the trained YOLO model.
         """
+        self.trained_dir = trained_dir
+        if model_path is None:
+            from part1_yolov8_enhanced_dataset import YOLOTrainer
+            available_models = YOLOTrainer.list_trained_models(self.trained_dir)
+            if not available_models:
+                st.error(f"No trained YOLO models found in {self.trained_dir}.")
+                raise FileNotFoundError(f"No trained YOLO models found in {self.trained_dir}.")
+            model_path = st.selectbox("Select a trained YOLO model", available_models, key="yolo_model_select")
+            model_path = os.path.join(self.trained_dir, model_path)
         self.model = YOLO(model_path)
 
     def process_image(self, image_path, output_folder="detected_face_yolov8"):
@@ -15,10 +26,11 @@ class YOLOProcessor:
         Process an image with YOLO and save the result.
         """
         os.makedirs(output_folder, exist_ok=True)
-        results = self.model(image_path)  # Run YOLO detection
-        for r in results:
-            r.save(filename=os.path.join(output_folder, "part2_demo_out.png"))
-        print(f"Processed image saved at {output_folder}/part2_demo_out.png")
+        with st.spinner("Detecting face in image..."):
+            results = self.model(image_path)  # Run YOLO detection
+            for r in results:
+                r.save(filename=os.path.join(output_folder, "part2_demo_out.png"))
+        st.success(f"Processed image saved at {output_folder}/part2_demo_out.png")
 
     def process_video(self, video_path, output_folder="detected_face_yolov8"):
         """
@@ -36,31 +48,19 @@ class YOLOProcessor:
         output_video_path = os.path.join(output_folder, "part2_demo_out.mp4")
         out = cv2.VideoWriter(output_video_path, fourcc, frame_rate, (width, height))
 
-        while cap.isOpened():
-            ret, frame = cap.read()
-            if not ret:
-                break
-            
-            # Run YOLO detection
-            results = self.model(frame)
-            for r in results:
-                processed_frame = r.plot()  # Get processed frame with bounding boxes
+        with st.spinner("Detecting faces in video..."):
+            while cap.isOpened():
+                ret, frame = cap.read()
+                if not ret:
+                    break
+                
+                # Run YOLO detection
+                results = self.model(frame)
+                for r in results:
+                    processed_frame = r.plot()  # Get processed frame with bounding boxes
 
-            out.write(processed_frame)  # Save to output video
+                out.write(processed_frame)  # Save to output video
 
-        cap.release()
-        out.release()
-        print(f"Processed video saved at {output_video_path}")
-
-# Example Usage
-if __name__ == "__main__":
-    model_path = "/mnt/c/Users/eeuma/Desktop/cow_facial_recognition_yolo_imagenet/models/fine_tuned/yolov8_fine_tuned_cow_face.pt"
-    processor = YOLOProcessor(model_path)
-
-    # Process an image
-    image_path = "/mnt/c/Users/eeuma/Desktop/cow_facial_recognition_yolo_imagenet/detected_face_yolov8/part2_demo.png"
-    processor.process_image(image_path)
-
-    # Process a video
-    video_path = "/mnt/c/Users/eeuma/Desktop/cow_facial_recognition_yolo_imagenet/detected_face_yolov8/part2_demo_video.mp4"
-    processor.process_video(video_path)
+            cap.release()
+            out.release()
+        st.success(f"Processed video saved at {output_video_path}")

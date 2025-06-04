@@ -123,3 +123,5 @@ MIT License (or specify your license here)
 - PyTorch, torchvision
 - Streamlit
 - All contributors and open-source libraries
+
+![alt text](image.png)

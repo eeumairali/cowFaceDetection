@@ -1,3 +1,29 @@
+"""
+🟦 YOLOv8-Based Dataset Generation for Classification
+
+🔹 **Purpose:**
+    - Uses YOLOv8 to detect and crop cow faces from videos.
+    - Automatically generates a classification dataset (train/test split).
+    - Each cow's images are saved in a separate folder for supervised learning.
+
+🔹 **Key Features:**
+    - Leverages YOLOv8 detection for robust face extraction.
+    - Configurable frame sampling rate and test/train split.
+    - Handles multiple cows and large video datasets.
+    - Output structure: dataset_for_classification/train/Cow (1)/, .../test/Cow (N)/
+
+🔹 **Technical Details:**
+    - Uses YOLOv8 window (default: 640x640) for detection.
+    - Crops faces using detected bounding boxes.
+    - Saves images in class-labeled folders for classification.
+    - Supports random sampling and reproducible splits.
+
+🔹 **Usage:**
+    - Run to prepare a dataset for EfficientNet/ResNet training.
+    - Output is ready for PyTorch ImageFolder or similar loaders.
+
+"""
+
 import os
 import cv2
 import random

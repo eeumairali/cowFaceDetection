@@ -1,3 +1,21 @@
+"""
+🟦 Pipeline Flow Diagram Generator
+
+🔹 **Purpose:**
+    - Generates a visual diagram of the full cow facial recognition pipeline.
+    - Helps users and supervisors understand the step-by-step process.
+
+🔹 **Key Features:**
+    - Visualizes data flow: video/image input → YOLOv8 detection → dataset generation → EfficientNet/ResNet training → prediction.
+    - Can be extended to show more details (e.g., model internals, data splits).
+    - Output is a PNG image for easy sharing and presentation.
+
+🔹 **Usage:**
+    - Run from the Streamlit app or as a script to generate/update the pipeline diagram.
+    - Useful for presentations and documentation.
+
+"""
+
 from graphviz import Digraph
 
 def create_pipeline_diagram(output_path="cow_detection_pipeline"): 

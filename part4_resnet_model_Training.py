@@ -1,3 +1,31 @@
+"""
+🟩 EfficientNet/ResNet Model Training Script
+
+🟢 **Model:** EfficientNet-B0 (default), can be adapted to ResNet
+🟢 **Purpose:** Train a deep neural network to classify individual cow faces.
+🟢 **Key Features:**
+    - Modern convolutional neural network (CNN) for image classification.
+    - EfficientNet: Compound scaling (width, depth, resolution) for optimal accuracy/efficiency.
+    - ResNet: Residual connections for very deep networks (e.g., ResNet-50, ResNet-101).
+    - Data augmentation: Random rotation, crop, flip, normalization.
+    - Customizable number of classes (auto-detected from dataset).
+    - Training metrics and logs displayed in Streamlit.
+
+🟢 **Technical Details:**
+    - Input size: 224x224 (default, configurable).
+    - Convolutional kernel sizes: 3x3, 1x1 (varies by layer).
+    - EfficientNet-B0: ~5.3M params, 18 layers, MBConv blocks, Swish activation.
+    - ResNet: 34-152 layers, uses skip connections, ReLU activation.
+    - Loss: CrossEntropyLoss.
+    - Optimizer: Adam (default).
+    - Output: Class probabilities for each cow.
+
+🟢 **Usage:**
+    - Trains EfficientNet/ResNet on cropped cow face dataset.
+    - Saves model weights in a dedicated folder for later inference.
+
+"""
+
 import torch
 import torch.nn as nn
 import torch.optim as optim

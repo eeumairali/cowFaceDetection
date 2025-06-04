@@ -1,3 +1,34 @@
+"""
+🟦 YOLOv8 Enhanced Dataset Training Script
+
+🔹 **Model:** YOLOv8 (You Only Look Once, version 8)
+🔹 **Purpose:** Object detection for cow faces in images/videos.
+🔹 **Key Features:**
+    - Real-time detection with a single forward pass.
+    - Sliding window (default: 640x640 pixels, configurable).
+    - Convolutional layers with various kernel sizes (typically 3x3, 1x1).
+    - Anchor-based bounding box prediction.
+    - Backbone: CSPDarknet, PANet, SPPF modules.
+    - Head: Detects objects at multiple scales.
+    - Customizable number of layers and parameters (YOLOv8n, YOLOv8s, etc.).
+    - Outputs: Bounding boxes, class probabilities, confidence scores.
+    - Training logs, metrics, and visualizations are saved for analysis.
+
+🔹 **Technical Details:**
+    - Input size: Default 640x640 (can be changed).
+    - Convolutional kernel sizes: 3x3, 1x1 (varies by layer).
+    - Number of layers: Varies by YOLOv8 variant (e.g., YOLOv8n: ~37 layers).
+    - Activation: SiLU (Swish), LeakyReLU.
+    - Loss: CIoU, BCE, etc.
+    - Output: [x, y, w, h, confidence, class probabilities].
+
+🔹 **Usage:**
+    - Trains YOLOv8 on your dataset for cow face detection.
+    - Saves best model weights and metrics in a dedicated folder.
+    - Can be used for inference and dataset generation.
+
+"""
+
 import os
 import shutil
 import csv

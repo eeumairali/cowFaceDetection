@@ -1,3 +1,28 @@
+"""
+🟦 YOLOv8 Face Detection Script
+
+🔹 **Model:** YOLOv8 (You Only Look Once, v8)
+🔹 **Purpose:** Detects and localizes cow faces in images and videos.
+🔹 **Key Features:**
+    - Real-time object detection with sliding window (default: 640x640).
+    - Uses convolutional layers (kernels: 3x3, 1x1) for feature extraction.
+    - Outputs bounding boxes, class labels, and confidence scores.
+    - Fast inference, suitable for video streams.
+    - Model variants: YOLOv8n, YOLOv8s, etc. (trade-off between speed and accuracy).
+
+🔹 **Technical Details:**
+    - Input window size: 640x640 (default, configurable).
+    - Convolutional kernel sizes: 3x3, 1x1.
+    - Number of layers: ~37 (YOLOv8n), more for larger variants.
+    - Activation: SiLU (Swish).
+    - Output: [x, y, w, h, confidence, class probabilities].
+
+🔹 **Usage:**
+    - Loads a trained YOLOv8 model and applies it to images/videos.
+    - Saves and displays detected faces with bounding boxes.
+
+"""
+
 import cv2
 import os
 from ultralytics import YOLO

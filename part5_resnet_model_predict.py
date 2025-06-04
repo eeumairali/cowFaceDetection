@@ -1,3 +1,26 @@
+"""
+🟩 EfficientNet/ResNet Model Prediction Script
+
+🟢 **Model:** EfficientNet-B0 (default), ResNet (optional)
+🟢 **Purpose:** Classify a single cropped cow face image.
+🟢 **Key Features:**
+    - Loads a trained EfficientNet/ResNet model.
+    - Predicts the cow identity from an input image.
+    - Displays the predicted class and the input image in Streamlit.
+    - Fast inference, suitable for real-time or batch processing.
+
+🟢 **Technical Details:**
+    - Input size: 224x224 (default).
+    - EfficientNet-B0: 18 layers, MBConv blocks, Swish activation.
+    - ResNet: 34-152 layers, skip connections, ReLU activation.
+    - Output: Class label (cow ID/name).
+
+🟢 **Usage:**
+    - Use for inference on new images after training.
+    - Can be integrated into a larger pipeline (e.g., YOLO+ResNet).
+
+"""
+
 import torch
 import torch.nn as nn
 from torchvision import models, transforms

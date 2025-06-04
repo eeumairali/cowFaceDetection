@@ -1,3 +1,27 @@
+"""
+🟦 YOLO+EfficientNet/ResNet Video Pipeline
+
+🔹 **Models:** YOLOv8 (detection) + EfficientNet/ResNet (classification)
+🔹 **Purpose:** Detects and classifies all cow faces in each frame of a video.
+🔹 **Key Features:**
+    - YOLOv8: Real-time detection, sliding window (default: 640x640), multi-scale.
+    - EfficientNet/ResNet: Classifies each detected face per frame.
+    - Draws bounding boxes and predicted labels on each frame.
+    - Saves and displays the annotated video in Streamlit.
+    - Handles multiple faces per frame, robust to video input.
+
+🔹 **Technical Details:**
+    - YOLOv8: ~37+ layers, 3x3/1x1 convolutions, SiLU activation.
+    - EfficientNet-B0: 18 layers, MBConv blocks, Swish activation.
+    - ResNet: 34-152 layers, skip connections, ReLU activation.
+    - Output: Annotated video with bounding boxes and class labels.
+
+🔹 **Usage:**
+    - Upload a video, select models, and run the pipeline.
+    - See both detection and classification results visually on video output.
+
+"""
+
 import torch
 import torch.nn as nn
 from torchvision import models, transforms

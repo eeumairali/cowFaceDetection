@@ -1,3 +1,27 @@
+"""
+🟦 YOLO+EfficientNet/ResNet Image Pipeline
+
+🔹 **Models:** YOLOv8 (detection) + EfficientNet/ResNet (classification)
+🔹 **Purpose:** Detects all cow faces in an image, then classifies each face.
+🔹 **Key Features:**
+    - YOLOv8: Real-time face detection, sliding window (default: 640x640), multi-scale.
+    - EfficientNet/ResNet: Classifies each detected face.
+    - Draws bounding boxes and predicted labels on the image.
+    - Displays and saves the annotated result in Streamlit.
+    - Handles multiple faces per image.
+
+🔹 **Technical Details:**
+    - YOLOv8: ~37+ layers, 3x3/1x1 convolutions, SiLU activation.
+    - EfficientNet-B0: 18 layers, MBConv blocks, Swish activation.
+    - ResNet: 34-152 layers, skip connections, ReLU activation.
+    - Output: Annotated image with bounding boxes and class labels.
+
+🔹 **Usage:**
+    - Upload an image, select models, and run the pipeline.
+    - See both detection and classification results visually.
+
+"""
+
 import torch
 import torch.nn as nn
 from torchvision import models, transforms

@@ -1,0 +1,24 @@
+# Core web app and pipeline dependencies
+streamlit
+Pillow
+ultralytics
+torch
+torchvision
+opencv-python
+scikit-learn
+graphviz
+matplotlib
+numpy
+
+# For progress bars, logging, and colored logs (optional, used by some dependencies)
+tqdm
+coloredlogs
+humanfriendly
+
+# For datetime usage in scripts
+python-dateutil
+
+# If you use ONNX export or advanced features (optional)
+onnx
+onnxruntime-gpu
+onnxslim
